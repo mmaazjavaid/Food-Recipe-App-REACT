@@ -5,7 +5,6 @@ import Vege from '../components/Vege'
 function Home() {
   return (
     <>
-    <div>Home</div>
     <Vege></Vege>
     <Popular></Popular>
     </>

@@ -30,6 +30,7 @@ function Popular() {
             options={{
                 perPage:4,
                 rewind:true,
+                autoplay:true,
                 // arrows:false,
                 // pagination:false,
                 gap:'5rem',
@@ -57,8 +58,8 @@ const Wrapper = styled.div`
  margin:4rem 0rem;
 `;
 const Card = styled.div`
-   height:20rem;
-   width:20rem;
+   height:15rem;
+   width:15rem;
    border-radius:2rem;
    overflow:hidden;
    position: relative;
