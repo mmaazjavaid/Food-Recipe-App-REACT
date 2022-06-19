@@ -26,7 +26,7 @@ function Category() {
           Thai
         </h4>
       </NavLink>
-      <NavLink to={'/cuisine/'}>
+      <NavLink to={'/cuisine/Japanese'}>
         <GiChopsticks/>
         <h4>
           Japanese
