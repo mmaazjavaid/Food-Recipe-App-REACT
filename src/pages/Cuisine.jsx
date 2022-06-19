@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 function Cuisine() {
 
     const getCuisine=async(name)=>{
-        const api=await fetch(``);
-        const data=api.json();
+        const api=await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=italian`);
+        const data=api.json()
+        
         
     }
+
+    getCuisine();
 
 
   return (
