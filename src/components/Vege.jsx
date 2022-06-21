@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css/skyblue';
+import {Link} from 'react-router-dom'
 function Vege() {
 
     const [vege, setvege] = useState([])
@@ -44,9 +45,12 @@ function Vege() {
                     return (
                         <SplideSlide key={vegerecipe.id}>
                             <Card>
+                                <Link to={vegerecipe.id} >
                                 <p>{vegerecipe.title}</p>
                                 <img src={vegerecipe.image} alt={vegerecipe.title} />
                                 <Gradient/>
+                                </Link>
+                                
                             </Card>
                         </SplideSlide>
                     )
