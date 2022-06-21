@@ -45,7 +45,7 @@ function Vege() {
                     return (
                         <SplideSlide key={vegerecipe.id}>
                             <Card>
-                                <Link to={vegerecipe.id} >
+                                <Link to={"/recipe/"+vegerecipe.id} >
                                 <p>{vegerecipe.title}</p>
                                 <img src={vegerecipe.image} alt={vegerecipe.title} />
                                 <Gradient/>
