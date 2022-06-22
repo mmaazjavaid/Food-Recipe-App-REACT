@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 function Recipe() {
   const [details,setdetails]=useState({});  
-  
+  const [activetab,setactivetab]=useState("instructions");
   const params=useParams();
   const fetchDetails=async()=>{
     const api= await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
     const data=await api.json();
     setdetails(data);
   }
+  
   useEffect(()=>{
     fetchDetails();
     console.log(details);
@@ -22,8 +23,8 @@ function Recipe() {
         <img src={details.image} alt="image"  />
       </div>
       <Info>
-        <button>Instructions</button>
-        <button>Ingredients</button>
+        <Button>Instructions</Button>
+        <Button>Ingredients</Button>
       </Info>
     </DetailWrapper>
   )
@@ -49,7 +50,7 @@ margin-top:2rem;
 }
 `;
 const Button=styled.div`
-padding: 1rem 2rem;
+  padding: 1rem 2rem;
   color: #313131;
   background: white;
   border: 2px solid black;
