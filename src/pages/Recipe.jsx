@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 function Recipe() {
   const [details,setdetails]=useState({});  
-  const [activetab,setactivetab]=useState("instructions");
+  const [activetab,setactivetab]=useState("Instructions");
   const params=useParams();
   const fetchDetails=async()=>{
     const api= await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
@@ -14,8 +14,9 @@ function Recipe() {
   
   useEffect(()=>{
     fetchDetails();
-    console.log(details);
-  },[])  
+    
+  },[])
+  console.log(details.extendedIngredients);  
   return (
     <DetailWrapper>
       <div>
@@ -23,8 +24,28 @@ function Recipe() {
         <img src={details.image} alt="image"  />
       </div>
       <Info>
-        <Button>Instructions</Button>
-        <Button>Ingredients</Button>
+        <div style={{display:"flex",marginBottom:"20px"}}>
+        <Button
+         className={activetab==="Instructions"? "active":""}
+         onClick={()=> setactivetab("Instructions")  }>Instructions</Button>
+        <Button
+        className={activetab==="Ingredients"? "active":""}
+        onClick={()=> setactivetab("Ingredients")}>Ingredients</Button>
+        </div>
+        {activetab==="Instructions" && (
+ <div>
+ <h4 dangerouslySetInnerHTML={{__html:details.summary}}></h4>
+ <h4 dangerouslySetInnerHTML={{__html:details.instructions}}></h4>
+</div>
+        )}
+       
+        {activetab==="Ingredients" && (
+          <ul>
+          {details.extendedIngredients.map((Ingredient)=>{
+            return <li key={Ingredient.id}>{Ingredient.original}</li>
+          })}
+        </ul>
+        )}
       </Info>
     </DetailWrapper>
   )
@@ -56,8 +77,9 @@ const Button=styled.div`
   border: 2px solid black;
   margin-right: 2rem;
   font-weight: 600;
+  cursor:pointer;
 `;
 const Info =styled.div`
-margin-left:10rem;
+ margin-left:5rem;
 `
 export default Recipe
