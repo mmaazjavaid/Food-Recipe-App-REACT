@@ -11,7 +11,6 @@ function Recipe() {
     const data=await api.json();
     setdetails(data);
   }
-  
   useEffect(()=>{
     fetchDetails();
     
